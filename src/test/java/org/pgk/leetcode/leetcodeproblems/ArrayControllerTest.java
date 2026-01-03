@@ -34,5 +34,18 @@ public class ArrayControllerTest {
                 .andExpect(content().json("[1, 2, 1, 2]"));
     }
 
+    @Test
+    void getOrderedMerge() throws Exception {
+
+        when(arrayService.getOrderedMerge(new int[]{1,4}, 2, new int[]{3,2}, 2))
+                .thenReturn(new int[]{1, 2, 3, 4});
+
+        mockMvc.perform(get("/array/merge")
+                .param("nums1", "1, 4")
+                .param("nums2", "3, 2"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[1, 2, 3, 4]"));
+    }
+
 
 }

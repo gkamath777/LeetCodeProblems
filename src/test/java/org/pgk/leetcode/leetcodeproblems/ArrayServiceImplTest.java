@@ -24,4 +24,11 @@ public class ArrayServiceImplTest {
 
         assertArrayEquals(new int[]{7, 7}, output);
     }
+
+    @Test
+    void getOrderedMerge_shouldMergeArrays() {
+        int[] nums1 = {1, 4};
+        int[] nums2 = {3, 2};
+        int[] output = arrayService.getOrderedMerge(nums1, nums1.length, nums2, nums2.length);
+    }
 }
