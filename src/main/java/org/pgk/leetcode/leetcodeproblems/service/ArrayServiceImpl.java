@@ -16,4 +16,12 @@ public class ArrayServiceImpl {
 
         return result;
     }
+
+    public int[] getOrderedMerge(int[] nums1, int m, int[] nums2, int n) {
+        int [] result = Arrays.copyOf(nums1,nums1.length + nums2.length);
+        System.arraycopy(nums2, 0, result, m, n);
+        Arrays.sort(result);
+
+        return result;
+    }
 }

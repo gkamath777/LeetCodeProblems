@@ -25,4 +25,9 @@ public class ArrayController {
         return arrayService.getConcatenation(nums);
     }
 
+    @GetMapping("/merge")
+    public int[] getMerge(@RequestParam int[] nums1, @RequestParam int[] nums2) {
+        return arrayService.getOrderedMerge(nums1, nums1.length, nums2, nums2.length);
+    }
+
 }
