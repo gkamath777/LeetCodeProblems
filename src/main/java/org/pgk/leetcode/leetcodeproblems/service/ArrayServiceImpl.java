@@ -40,4 +40,24 @@ public class ArrayServiceImpl {
 
         return result;
     }
+
+    /**
+     * Removes all occurrences of the specified value from the given array and
+     * returns the count of remaining elements.
+     * The method modifies the input array in place to exclude the values equal to
+     * the specified integer and returns the number of elements that are not removed.
+     *
+     * @param nums the input array of integers to process
+     * @param value the integer value to be removed from the array
+     * @return the count of remaining elements in the array after removal
+     */
+    public int removeValue(int[] nums, int value) {
+        int k = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != value) {
+                nums[k++] = nums[i];
+            }
+        }
+        return k;
+    }
 }

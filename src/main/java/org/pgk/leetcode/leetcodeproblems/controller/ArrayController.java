@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 
 
 @RestController
@@ -47,6 +48,19 @@ public class ArrayController {
     @GetMapping("/merge")
     public int[] getMerge(@RequestParam int[] nums1, @RequestParam int[] nums2) {
         return arrayService.getOrderedMerge(nums1, nums1.length, nums2, nums2.length);
+    }
+
+    /**
+     * Removes all occurrences of a specified integer value from the given array.
+     *
+     * @param nums the input array of integers to process
+     * @param value the integer value to be removed from the array
+     * @return a new integer array containing the elements from the input array excluding
+     *         all occurrences of the specified value
+     */
+    @GetMapping("/remove")
+    public int[] removeValue(@RequestParam int[] nums, @RequestParam int value) {
+        return Arrays.copyOfRange(nums, 0, arrayService.removeValue(nums, value));
     }
 
 }
