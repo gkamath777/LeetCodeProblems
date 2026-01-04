@@ -47,5 +47,16 @@ public class ArrayControllerTest {
                 .andExpect(content().json("[1, 2, 3, 4]"));
     }
 
+    @Test
+    void removeValue() throws Exception {
+        when(arrayService.removeValue(new int[]{1,2,3,2,5}, 2))
+        .thenReturn(new int[]{1,3,5});
+
+        mockMvc.perform(get("/array/remove")
+                .param("nums", "1, 2, 3, 2, 5")
+                .param("value", "2"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[1, 3, 5]"));
+    }
 
 }

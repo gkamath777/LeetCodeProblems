@@ -30,5 +30,16 @@ public class ArrayServiceImplTest {
         int[] nums1 = {1, 4};
         int[] nums2 = {3, 2};
         int[] output = arrayService.getOrderedMerge(nums1, nums1.length, nums2, nums2.length);
+
+        assertArrayEquals(new int[]{1, 2, 3, 4}, output);
+    }
+
+    @Test
+    void removeValue_shouldRemoveValue() {
+        int[] nums = {1, 2, 3, 2, 5};
+        int value = 2;
+        int[] output = arrayService.removeValue(nums, value);
+
+        assertArrayEquals(new int[]{1, 3, 5}, output);
     }
 }

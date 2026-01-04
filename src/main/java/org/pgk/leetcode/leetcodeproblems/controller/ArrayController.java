@@ -57,10 +57,13 @@ public class ArrayController {
      * @param value the integer value to be removed from the array
      * @return a new integer array containing the elements from the input array excluding
      *         all occurrences of the specified value
+     *
+     * Sample Request: GET http://localhost:8080/array/remove?nums=1,4,2,3,2,5&value=2
+     *
      */
     @GetMapping("/remove")
     public int[] removeValue(@RequestParam int[] nums, @RequestParam int value) {
-        return Arrays.copyOfRange(nums, 0, arrayService.removeValue(nums, value));
+        return arrayService.removeValue(nums, value);
     }
 
 }

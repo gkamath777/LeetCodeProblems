@@ -51,13 +51,13 @@ public class ArrayServiceImpl {
      * @param value the integer value to be removed from the array
      * @return the count of remaining elements in the array after removal
      */
-    public int removeValue(int[] nums, int value) {
+    public int[] removeValue(int[] nums, int value) {
         int k = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != value) {
                 nums[k++] = nums[i];
             }
         }
-        return k;
+        return Arrays.copyOfRange(nums, 0, k);
     }
 }
