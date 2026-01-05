@@ -66,4 +66,17 @@ public class ArrayController {
         return arrayService.removeValue(nums, value);
     }
 
+    /**
+     * Removes duplicate values from the given ordered integer array. The method retains only the first
+     * occurrence of each unique element and removes subsequent duplicates. The input array is
+     * expected to be sorted for proper functionality.
+     *
+     * @param nums the input array of integers, which must be sorted in non-decreasing order
+     * @return a new array containing only the unique elements from the input array
+     */
+    @GetMapping("/removeDup")
+    public int[] removeDuplicateValue(@RequestParam int[] nums) {
+        return arrayService.removeDuplicates(nums);
+    }
+
 }

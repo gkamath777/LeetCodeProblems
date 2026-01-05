@@ -60,4 +60,24 @@ public class ArrayServiceImpl {
         }
         return Arrays.copyOfRange(nums, 0, k);
     }
+
+    /**
+     * Removes duplicate values from the given ordered integer array. This method modifies the input array
+     * to retain only the first occurrence of each unique element, assuming the input array is sorted
+     * in non-decreasing order.
+     *
+     * @param nums the input array of integers, sorted in non-decreasing order
+     * @return a new array containing only the unique elements from the input array
+     */
+    public int[] removeDuplicates(int[] nums) {
+        int k = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i-1]) {
+                nums[k++] = nums[i];
+            }
+        }
+        return Arrays.copyOfRange(nums, 0, k);
+    }
+
+
 }
