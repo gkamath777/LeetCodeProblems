@@ -42,4 +42,12 @@ public class ArrayServiceImplTest {
 
         assertArrayEquals(new int[]{1, 3, 5}, output);
     }
+
+    @Test
+    void removeDuplicates_shouldRemoveDuplicates() {
+        int[] nums = {1, 2, 2, 3, 4, 4, 5};
+        int[] output = arrayService.removeDuplicates(nums);
+
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, output);
+    }
 }

@@ -59,4 +59,15 @@ public class ArrayControllerTest {
                 .andExpect(content().json("[1, 3, 5]"));
     }
 
+    @Test
+    void removeDupValue() throws Exception {
+        when(arrayService.removeDuplicates(new int[]{1,2,2,3,4,4,5}))
+                .thenReturn(new int[]{1,2,3,4,5});
+
+        mockMvc.perform(get("/array/removeDup")
+                .param("nums", "1, 2, 2, 3, 4, 4, 5"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[1, 2, 3, 4, 5]"));
+    }
+
 }
