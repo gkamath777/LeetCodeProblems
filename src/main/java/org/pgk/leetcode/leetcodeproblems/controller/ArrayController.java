@@ -73,10 +73,28 @@ public class ArrayController {
      *
      * @param nums the input array of integers, which must be sorted in non-decreasing order
      * @return a new array containing only the unique elements from the input array
+     *
+     * Sample Request: GET http://localhost:8080/array/removeDup?nums=1,2,2,3,4,4,5
+     *
      */
     @GetMapping("/removeDup")
     public int[] removeDuplicateValue(@RequestParam int[] nums) {
         return arrayService.removeDuplicates(nums);
     }
 
+    /**
+     * Calculates the maximum profit that can be achieved by buying and selling stocks
+     * given the daily prices. Multiple transactions (buy-sell pairs) are allowed as long
+     * as a new purchase can only be made after selling the previously held stock.
+     *
+     * @param prices an array of integers representing the prices of a stock on different days
+     * @return the maximum profit that can be achieved from the given price array
+     *
+     * Sample Request: GET http://localhost:8080/array/maxProfit?prices=6,1,3,2,4,7
+     *
+     */
+    @GetMapping("/maxProfit")
+    public int maxProfit(@RequestParam int[] prices) {
+        return arrayService.maxProfit(prices);
+    }
 }
