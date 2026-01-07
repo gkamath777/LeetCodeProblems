@@ -83,6 +83,24 @@ public class ArrayController {
     }
 
     /**
+     * Removes duplicate values from the given sorted integer array. This method retains only the first
+     * occurrence of each unique element and removes subsequent duplicates. The input array is
+     * expected to be sorted in non-decreasing order for accurate results.
+     *
+     * @param nums the input array of integers, sorted in non-decreasing order
+     * @return a new array containing only the unique elements from the input array
+     *
+     * Sample Request: Sample Request: GET http://localhost:8080/array/removeDup2?nums=1,2,2,2,3,3,4,4,5
+     *
+     */
+    @GetMapping("/removeDup2")
+    public int[] removeDuplicateValue2(@RequestParam int[] nums) {
+        return arrayService.removeDuplicates(nums);
+    }
+
+
+
+    /**
      * Calculates the maximum profit that can be achieved by buying and selling stocks
      * given the daily prices. Multiple transactions (buy-sell pairs) are allowed as long
      * as a new purchase can only be made after selling the previously held stock.
