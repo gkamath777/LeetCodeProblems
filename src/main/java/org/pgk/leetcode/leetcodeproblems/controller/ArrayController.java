@@ -95,7 +95,7 @@ public class ArrayController {
      */
     @GetMapping("/removeDup2")
     public int[] removeDuplicateValue2(@RequestParam int[] nums) {
-        return arrayService.removeDuplicates(nums);
+        return arrayService.removeDuplicates2(nums);
     }
 
 
