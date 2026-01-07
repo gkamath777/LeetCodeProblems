@@ -138,4 +138,21 @@ public class ArrayServiceImpl {
     }
 
 
+    public int[] rotate(int[] nums, int k) {
+        int[] copyNums = Arrays.copyOf(nums, nums.length);
+        if(k <= nums.length) {
+            for (int i = 0; i < nums.length; i++) {
+                if(i < k) {
+                    nums[i] = copyNums[nums.length - k + i];
+                } else {
+                    nums[i] = copyNums[i-k];
+                }
+
+            }
+        } else {
+            rotate(nums, k % nums.length) ;
+        }
+
+        return nums;
+    }
 }

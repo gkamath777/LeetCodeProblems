@@ -95,6 +95,7 @@ public class ArrayController {
      */
     @GetMapping("/removeDup2")
     public int[] removeDuplicateValue2(@RequestParam int[] nums) {
+        System.out.println(nums.length);
         return arrayService.removeDuplicates2(nums);
     }
 
@@ -114,5 +115,11 @@ public class ArrayController {
     @GetMapping("/maxProfit")
     public int maxProfit(@RequestParam int[] prices) {
         return arrayService.maxProfit(prices);
+    }
+
+
+    @GetMapping("/rotate")
+    public int[] rotate(@RequestParam int[] nums, @RequestParam int k) {
+        return arrayService.rotate(nums, k);
     }
 }
