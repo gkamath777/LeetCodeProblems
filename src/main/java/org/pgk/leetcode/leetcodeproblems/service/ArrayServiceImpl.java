@@ -137,6 +137,35 @@ public class ArrayServiceImpl {
         return profit;
     }
 
+    /**
+     * Calculates the maximum profit achievable from a series of stock prices
+     * by performing at most one buy and one sell transaction.
+     * The method ensures you must buy the stock before selling.
+     *
+     * @param prices an array of integers representing the stock prices on different days
+     * @return the maximum profit that can be achieved, or 0 if no profitable transaction is possible
+     */
+    public int maxProfit2(int[] prices) {
+        int buy = prices[0];
+        int sell = 0;
+        int profit = 0;
+        int i = 0;
+        for(i = 1; i < prices.length; i++) {
+            if(prices[i] < buy) {
+                buy = prices[i];
+            } else {
+                if(prices[i] - buy >= profit) {
+                    sell = prices[i];
+                    profit = sell - buy;
+                }
+            }
+        }
+        if(profit <= 0) {
+            return 0;
+        }
+
+        return profit;
+    }
 
     public int[] rotate(int[] nums, int k) {
         int[] copyNums = Arrays.copyOf(nums, nums.length);

@@ -117,6 +117,24 @@ public class ArrayController {
         return arrayService.maxProfit(prices);
     }
 
+    /**
+     * Calculates the maximum profit that can be achieved by buying and selling stocks
+     * given the daily prices. Unlike basic implementations, this method uses a different
+     * approach to optimize profit calculation. Multiple transactions (buy-sell operations)
+     * are allowed as long as a new purchase can only be made after the previous stock has been sold.
+     *
+     * @param prices an array of integers representing the prices of a stock on different days
+     * @return the maximum profit that can be achieved from the given price array using the optimized method
+     *
+     * Sample Request: GET http://localhost:8080/array/maxProfit?prices=6,1,3,2,4,7
+     *
+     *
+     */
+    @GetMapping("/maxProfit2")
+    public int maxProfit2(@RequestParam int[] prices) {
+        return arrayService.maxProfit2(prices);
+    }
+
 
     @GetMapping("/rotate")
     public int[] rotate(@RequestParam int[] nums, @RequestParam int k) {
