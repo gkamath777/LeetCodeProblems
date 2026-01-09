@@ -135,7 +135,14 @@ public class ArrayController {
         return arrayService.maxProfit2(prices);
     }
 
-
+    /**
+     * Rotates the given array to the right by the specified number of steps.
+     * The elements at the end of the array are moved to the beginning as part of the rotation process.
+     *
+     * @param nums the input array of integers to be rotated
+     * @param k the number of steps to rotate the array to the right
+     * @return a new array containing the rotated elements
+     */
     @GetMapping("/rotate")
     public int[] rotate(@RequestParam int[] nums, @RequestParam int k) {
         return arrayService.rotate(nums, k);

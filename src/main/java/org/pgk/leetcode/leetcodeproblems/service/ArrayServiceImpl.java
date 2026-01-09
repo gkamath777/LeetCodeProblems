@@ -167,6 +167,14 @@ public class ArrayServiceImpl {
         return profit;
     }
 
+    /**
+     * Rotates the elements of an array to the right by the specified number of steps.
+     * If the number of steps is greater than the length of the array, it computes the effective rotation.
+     *
+     * @param nums the array of integers to be rotated
+     * @param k the number of steps to rotate the array to the right
+     * @return the rotated array
+     */
     public int[] rotate(int[] nums, int k) {
         int[] copyNums = Arrays.copyOf(nums, nums.length);
         if(k <= nums.length) {
