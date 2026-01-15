@@ -147,4 +147,32 @@ public class ArrayController {
     public int[] rotate(@RequestParam int[] nums, @RequestParam int k) {
         return arrayService.rotate(nums, k);
     }
+
+    /**
+     * Determines if it is possible to reach the last index of the given array
+     * starting from the first index. Each element in the array represents the
+     * maximum jump length at that position.
+     *
+     * @param nums an array of non-negative integers where each element represents
+     *             the maximum jump length at that position
+     * @return true if it is possible to reach the last index, false otherwise
+     */
+    @GetMapping("/CanJump1")
+    public boolean canJump1(@RequestParam int[] nums) {
+        return arrayService.canJumpType1(nums);
+    }
+
+    /**
+     * Finds the single number in the given integer array where every other number
+     * appears exactly twice. The method returns the unique number that does not have
+     * a duplicate in the array.
+     *
+     * @param nums an array of integers where every other element appears exactly twice
+     *             except for one element which appears only once
+     * @return the single integer that appears only once in the array
+     */
+    @GetMapping("/SingleNumber")
+    public int singleNumber(@RequestParam int[] nums) {
+        return arrayService.singleNumberNotOptimized(nums);
+    }
 }

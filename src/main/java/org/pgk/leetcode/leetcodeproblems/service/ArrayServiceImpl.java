@@ -3,6 +3,8 @@ package org.pgk.leetcode.leetcodeproblems.service;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class ArrayServiceImpl {
@@ -192,4 +194,58 @@ public class ArrayServiceImpl {
 
         return nums;
     }
+
+    /**
+     * Determines if you can reach the last index of the array starting from the first index.
+     * The array elements represent the maximum jump length at that position.
+     *
+     * @param nums the input array of integers where each element signifies the maximum jump length from that position
+     * @return true if it is possible to reach the last index, false otherwise
+     */
+    public boolean canJumpType1(int[] nums) {
+        int farthest = 0;
+        for(int i =0; i< nums.length; i++) {
+            if(i> farthest) {
+                return false;
+            }
+
+            farthest = Math.max(farthest, i+ nums[i]);
+
+            if(farthest > nums.length -1)
+                return true;
+        }
+        return true;
+    }
+
+    /**
+     * Finds the single number in the given array that appears only once, while all other numbers appear twice.
+     * This implementation is not optimized for time or space complexity.
+     *
+     * @param nums the input array of integers, where all elements except one appear twice
+     * @return the integer that appears only once in the array
+     */
+    public int singleNumberNotOptimized(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int value = 0;
+        for(int num : nums) {
+            map.put(num, map.getOrDefault(num, 0)+1);
+        }
+
+        for(Map.Entry<Integer, Integer> entry: map.entrySet()) {
+            if(entry.getValue()==1) {
+                value = entry.getKey();
+            }
+        }
+        return value;
+    }
+
+
+    public int singleNumberOptimized(int[] nums) {
+        int result = 0;
+        for(int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+
 }
