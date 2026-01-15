@@ -2,9 +2,7 @@ package org.pgk.leetcode.leetcodeproblems.service;
 
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ArrayServiceImpl {
@@ -246,6 +244,49 @@ public class ArrayServiceImpl {
             result ^= num;
         }
         return result;
+    }
+
+
+    public int[] arrayIntersect(int[] nums1, int[] nums2) {
+        int[] smaller;
+        int[] larger;
+        if(nums1.length <= nums2.length) {
+            smaller = nums1;
+            larger = nums2;
+        } else {
+            smaller = nums2;
+            larger = nums1;
+        }
+
+        List<Integer> res = getIntegers(smaller, larger);
+
+        int[] output = new int[res.size()];
+        for(int k=0; k< res.size();k++)
+            output[k] = res.get(k);
+        return output;
+
+    }
+
+    private static List<Integer> getIntegers(int[] smaller, int[] larger) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int num : smaller) {
+            map.put(num, map.getOrDefault(num, 0)+1);
+        }
+
+        List<Integer> res = new ArrayList<>();
+
+        for (int j : larger) {
+            if (map.containsKey(j)) {
+                int count = map.get(j);
+                if (count == 1) {
+                    map.remove(j);
+                } else {
+                    map.put(j, count - 1);
+                }
+                res.add(j);
+            }
+        }
+        return res;
     }
 
 }

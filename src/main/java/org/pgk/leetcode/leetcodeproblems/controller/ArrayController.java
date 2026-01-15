@@ -175,4 +175,10 @@ public class ArrayController {
     public int singleNumber(@RequestParam int[] nums) {
         return arrayService.singleNumberNotOptimized(nums);
     }
+
+
+    @GetMapping("/intersect")
+    public int[] arrayIntersect(@RequestParam int[] nums1, @RequestParam int[] nums2) {
+        return arrayService.arrayIntersect(nums1, nums2);
+    }
 }
