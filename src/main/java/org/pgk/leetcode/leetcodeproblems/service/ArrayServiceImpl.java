@@ -289,4 +289,83 @@ public class ArrayServiceImpl {
         return res;
     }
 
+    public int[] plusOneForSmallInt(int[] digits) {
+        int sum = 0;
+        for(int i=0 ; i<digits.length; i++) {
+            sum += digits[i] * ((int) Math.pow(10, digits.length-1-i));
+        }
+
+        sum = sum + 1;
+        System.err.println(sum);
+        int temp = sum;
+        int len = 0;
+        while(temp > 0) {
+            len++;
+            temp /= 10;
+        }
+
+        int[] newInt = new int[len];
+        int index = len -1;
+        while(sum >0) {
+            newInt[index--] = sum % 10;
+
+            sum = sum/10;
+            System.err.println(index + " "+ sum);
+        }
+
+        return newInt;
+    }
+
+
+    public int[] plusOneNonOptimized(int[] digits) {
+        List<Integer> res = new ArrayList<>();
+        int carry = 1;
+        int length = digits.length -1;
+        for(int i= length ; i>=0; i--) {
+            int value = digits[i] + carry;
+            if(value >= 10) {
+                value = value%10;
+                carry = 1;
+            } else {
+                carry = 0;
+            }
+            res.add(value);
+        }
+        if(carry == 1)
+            res.add(carry);
+
+        int[] output = new int[res.size()];
+        for(int k=0; k< res.size();k++)
+            output[k] = res.get(res.size()-k-1);
+        return output;
+
+    }
+
+    public int[] plusOneOptimized(int[] digits) {
+        for(int i=digits.length -1 ; i>=0; i--) {
+            if(digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            }
+            digits[i] = 0;
+        }
+
+        int[] out = new int[digits.length + 1];
+        out[0] = 1;
+        return out;
+    }
+
+    public void moveZeroes(int[] nums) {
+        int temp = 0;
+        for(int num: nums) {
+            if(num != 0 ) {
+                nums[temp++] = num;
+            }
+        }
+
+        while(temp < nums.length)
+            nums[temp++] = 0;
+    }
+}
+
 }
