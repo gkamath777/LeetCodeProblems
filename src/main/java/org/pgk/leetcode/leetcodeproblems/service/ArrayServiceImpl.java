@@ -366,6 +366,68 @@ public class ArrayServiceImpl {
         while(temp < nums.length)
             nums[temp++] = 0;
     }
-}
+
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i=0; i< nums.length; i++) {
+            int delta = target - nums[i];
+            if(nums[i] > -1000000000 && nums[i] < 1000000000) {
+                if(map.containsKey(delta)) {
+                    return new int[] { map.get(delta), i };
+                }
+                map.put(nums[i], i);
+            }
+        }
+
+        throw new IllegalArgumentException("No two sum solution exists for the given input.");
+    }
+
+    /**
+     * Validates whether a given 9x9 Sudoku board is valid.
+     * A Sudoku board is valid if:
+     * - Each row must contain the digits 1-9 without repetition.
+     * - Each column must contain the digits 1-9 without repetition.
+     * - Each of the 9 sub-grids (3x3 blocks) must contain the digits 1-9 without repetition.
+     * The input board may contain the character '.' which represents an empty cell and should be ignored.
+     *
+     * @param board a 9x9 2D character array representing the Sudoku board. Valid characters are '1' to '9' and '.' for empty cells.
+     * @return true if the Sudoku board is valid according to the rules, false otherwise.
+     */
+    public boolean isValidSudoku(char[][] board) {
+        Set<Character>[] row = new HashSet[9];
+        Set<Character>[] col = new HashSet[9];
+        Set<Character>[] block = new HashSet[9];
+
+
+        for(int i=0; i< 9; i++) {
+            row[i] = new HashSet<>();
+            col[i] = new HashSet<>();
+            block[i] = new HashSet<>();
+        }
+
+
+        for(int x=0; x< 9; x++) {
+            for(int y=0; y<9; y++) {
+                char k = board[x][y];
+                if( k == '.')
+                    continue;
+
+                if(row[x].contains(k))
+                    return false;
+                row[x].add(k);
+
+                if(col[y].contains(k))
+                    return false;
+                col[y].add(k);
+
+                int box = (x / 3) * 3 + (y / 3);
+                if(block[box].contains(k))
+                    return false;
+                block[box].add(k);
+            }
+        }
+        return true;
+    }
 
 }

@@ -181,4 +181,18 @@ public class ArrayController {
     public int[] arrayIntersect(@RequestParam int[] nums1, @RequestParam int[] nums2) {
         return arrayService.arrayIntersect(nums1, nums2);
     }
+
+    /**
+     * Determines if a given Sudoku board is valid. A valid Sudoku board must meet the following conditions:
+     * 1. Each row must contain the digits 1-9 without repetition.
+     * 2. Each column must contain the digits 1-9 without repetition.
+     * 3. Each of the 9 sub-boxes of the grid must contain the digits 1-9 without repetition.
+     *
+     * @param board a 2D character array representing a Sudoku board, where empty cells are represented by '.'
+     * @return true if the given Sudoku board is valid, false otherwise
+     */
+    @GetMapping("/isValidSudoku")
+    public boolean isValidSudoku(@RequestParam char[][] board) {
+        return arrayService.isValidSudoku(board);
+    }
 }
