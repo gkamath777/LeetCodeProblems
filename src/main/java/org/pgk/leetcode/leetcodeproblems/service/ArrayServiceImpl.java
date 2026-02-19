@@ -430,4 +430,39 @@ public class ArrayServiceImpl {
         return true;
     }
 
+    /**
+     * Rotates the given n x n 2D matrix 90 degrees clockwise in place.
+     * This operation modifies the input matrix directly without using extra space.
+     *
+     * @param matrix The n x n 2D matrix to be rotated. The matrix is represented
+     *               as a two-dimensional array, where matrix[i][j] represents the
+     *               element in the ith row and jth column.
+     */
+    public void rotate(int[][] matrix) {
+
+        int n = matrix.length;
+        // Step 1 - Transpose
+        for(int i = 0; i< n; i++) {
+            for(int j = i; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+
+
+        // Steps - Reverse each row
+        for(int k = 0; k< n; k++) {
+            int left = 0, right = n-1;
+            while(left < right) {
+                int temp = matrix[k][right];
+                matrix[k][right] = matrix[k][left];
+                matrix[k][left] = temp;
+                left++;
+                right--;
+            }
+
+        }
+    }
+
 }
